@@ -5,19 +5,469 @@
     <meta http-equiv="cache-control" content="no-cache" />
     <meta http-equiv="expires" content="0" />
     <meta http-equiv="pragma" content="no-cache" />
-    <title>Information Retrieval in an Infodemic: The Case of COVID-19 Publications</title>
+    <title>
+      Information Retrieval in an Infodemic: The Case of COVID-19 Publications
+    </title>
     <!--Antet start-->
     <p style="position: absolute; top: 0; left: 3em; color: black">
-      Eng. Andrei-Mihai Micu, 2023<br />
+      Eng. Andrei-Mihai Micu,<br />
+      Sofronea Maria-Alexandra 2023<br />
       Facultatea de Automatică și Calculatoare<br />
       Universitatea Politehnică Timișoara, România<br />
-    <!--Antet end-->
+      <!--Antet end-->
     </p>
   </head>
-  <body>
+  <body style="max-width: 100%; overflow-x: hidden">
     <h1 style="text-align: center; position: relative; top: 2em">
-    Information Retrieval in an Infodemic: <br>
-    The Case of COVID-19 Publications
+      Information Retrieval in an Infodemic: <br />
+      The Case of COVID-19 Publications
     </h1>
+    <!--Introducere start-->
+    <div style="padding-left: 5em; padding-right: 5em">
+      <section>
+        <p style="position: relative; top: 5em">
+          &emsp;&emsp;The paper “Information Retrieval in an Infodemic: The Case
+          of COVID-19 Publications” [1] authored by Douglas Teodoro, Sohrab
+          Ferdowsi, Nikolay Borissov, Elham Kashani, David Vicente Alvarez,
+          Jenny Copara, Racha Gouareb, Nona Naderi and Poorya Amini was
+          published in late 2021 in the Journal of Medical Internet Research.<br /><br />
+        </p>
+        <h2 style="position: relative; top: 5em; left: 5em">I. Background</h2>
+        <br />
+        <p style="position: relative; top: 5em">
+          &emsp;&emsp;COVID-19, because of its effects on the social and
+          economical life of everyone, drew the attention of many scientifically
+          inclined people or companies that focused on researching the
+          pandemic.<br /><br />
+        </p>
+        <div style="position: relative; top: 3.5em">
+          <img
+            src="pubPatterns.PNG"
+            alt="Publication patterns of Covid-19 research"
+            style="display: block; margin-left: auto; margin-right: auto"
+          />
+          <p style="text-align: center">
+            Figure 1. Publication patterns of Covid-19 research in the first 3
+            months of the outbreak. Image taken from [2].<br />
+          </p>
+        </div>
+        <p style="position: relative; top: 5em">
+          &emsp;&emsp;However, because of the sheer number of articles and
+          publications, related to COVID-19, that appeared in the latest years,
+          it resulted in an “infodemic” – too many new concepts and terminology,
+          coming from known and unknown sources, sometimes with spelling
+          mistakes, were making it increasingly hard to search and find
+          important information on the topic.<br /><br />
+          &emsp;&emsp;Keeping up to date with accurate and factual information
+          is difficult because the knowledge about the pandemic is continually
+          changing. Sometimes, previously considered truths are contradicted by
+          newfound research. Because of this, the intended audience can become
+          desensitized to new information on COVID-19 – the recommendations
+          regarding social distancing changing from month to month for example
+          or mask wearing recommendations.<br /><br />
+          &emsp;&emsp;To combat this phenomenon, the World Health Organization
+          (WHO) published recommendations related to improving the reviewing and
+          verification of evidence and information related to COVID-19. This
+          triggered a response from the community that in turn helped create a
+          few datasets, such as CORD-19 (COVID-19 Open Research Dataset) and
+          worked on information retrieval challenges, such as the TREC-COVID.<br /><br />
+          &emsp;&emsp;TREC-COVID challenge entailed creating a model able to
+          efficiently rank results related to COVID-19 based on queries. The
+          authors divised such a model and measured its capabilities on the
+          TREC-COVID challenge, based on the CORD-19 corpus.<br /><br />
+        </p>
+      </section>
+    </div>
+    <!--Introducere end-->
+
+    <!--Methods start-->
+    <div style="padding-left: 5em; padding-right: 5em">
+      <section>
+        <p style="position: relative; top: 5em">
+          &emsp;&emsp;The paper “Information Retrieval in an Infodemic: The Case
+          of COVID-19 Publications” [1] authored by Douglas Teodoro, Sohrab
+          Ferdowsi, Nikolay Borissov, Elham Kashani, David Vicente Alvarez,
+          Jenny Copara, Racha Gouareb, Nona Naderi and Poorya Amini was
+          published in late 2021 in the Journal of Medical Internet Research.<br /><br />
+        </p>
+        <h2 style="position: relative; top: 5em; left: 5em">II. Methods</h2>
+        <br />
+        <!--dataset start-->
+        <h3 style="position: relative; top: 5em; left: 5em">1. The dataset</h3>
+        <p style="position: relative; top: 5em">
+          &emsp;&emsp;The CORD-19 dataset is composed of multiple publications
+          and articles related to coronaviruses and other respiratory syndromes.
+          The sources that make up CORD-19 are varied: PubMed, PubMed Central
+          (PMC), Medline, Elsevier, WHO, bioRxiv, medRxiv, and arXiv – the
+          approximate number of total documents is 200 000.<br /><br />
+        </p>
+        <div style="position: relative; top: 3.5em">
+          <img
+            src="cord19.PNG"
+            alt="CORD-19 dataset visualized"
+            style="display: block; margin-left: auto; margin-right: auto"
+          />
+          <p style="text-align: center">
+            Figure 2. CORD-19 dataset visualized. The dataset is split in
+            “rounds”, fitting the challenge theme of the task. The round number
+            5 measures approximately 200 000 documents. Image taken from [1].<br />
+          </p>
+        </div>
+        <p style="position: relative; top: 5em">
+          &emsp;&emsp;TREC-COVID challenge also comes with a set of relevant
+          topics, collected from researchers that posed them during the
+          pandemic.<br /><br />
+        </p>
+        <div style="position: relative; top: 3.5em">
+          <img
+            src="exampleTopics.PNG"
+            alt="Example of TREC-COVID topics"
+            style="display: block; margin-left: auto; margin-right: auto"
+          />
+          <p style="text-align: center">
+            Table 1. Example of TREC-COVID topics with increasing context. Table
+            taken from [1].<br />
+          </p>
+        </div>
+        <!--dataset end-->
+
+        <!--pipeline start-->
+        <h3 style="position: relative; top: 5em; left: 5em">
+          2. Multistage retrieval pipeline
+        </h3>
+        <p style="position: relative; top: 5em">
+          &emsp;&emsp;The architecture employed by the authors, in order to rank
+          the results of CORD-19, can be considered a complex pipeline
+          consisting of 3 main stages: first stage retrieval using classic
+          probabilistic methods, second stage neural reranking models and rank
+          fusion algorithms stage.<br /><br />
+        </p>
+        <div style="position: relative; top: 3.5em">
+          <img
+            src="pipeline.PNG"
+            alt="CORD-19 dataset visualized"
+            style="display: block; margin-left: auto; margin-right: auto"
+          />
+          <p style="text-align: center">
+            Figure 3. Multistage retrieval pipeline proposed in [1]. The 3
+            stages aforementioned can be observed having different colors: first
+            stage light green, second stage light blue and third stage dark
+            blue. M1 - M7 correspond to the different models used throughout the
+            challenge. Image taken from [1].<br />
+          </p>
+        </div>
+        <p style="position: relative; top: 5em">
+          &emsp;&emsp;The corpus used during the implementation phase consisted
+          of metadata: title, abstract and full text for each document. The
+          models used by the authors were BERT (Bidirectional Encoder
+          Representations from Transformers), BM25 (Okapi Best Match 25), DFR
+          (divergence from randomness), L-MART (LambdaMART), LMD (language model
+          Dirichlet), Logistic (logistic regression model), RoBERTa (robustly
+          optimized BERT approach) and RRF (reciprocal rank fusion).<br /><br />
+          &emsp;&emsp;<b>a. First stage: Retrieval</b><br />
+          The first-stage retrieval involved assessing three classic
+          query-document probabilistic weighting models: BM25, DFR, and LMD. The
+          models were implemented within the Elasticsearch framework and mainly
+          considered bag-of-words statistics, ignoring the sequential nature of
+          text and word relations.<br /><br />
+          &emsp;&emsp;BM25 uses a term frequency-inverse document frequency
+          (tf-idf) framework to calculate term weights. DFR extends tf-idf by
+          considering the divergence of term frequency from collection
+          frequency, inversely affecting term weights. LMD uses a language model
+          with Dirichlet-prior smoothing to measure similarity.<br /><br />
+          &emsp;&emsp;<b>b. Second stage: Reranking</b><br />
+          In the second stage reranking, three transformer-based models, BERT,
+          RoBERTa, and XLNet, were utilized in order to improve limitations
+          caused by the rankings generated in the first stage, therefore being
+          more focused on capturing syntactic and semantic relations in text.
+          The authors made use of the model implementations available from the
+          Hugging Face framework.<br /><br />
+          &emsp;&emsp;The BERT model was pretrained on a large corpus in order
+          to predict the relevance of documents for given query topics. Inputs
+          comprised the topic and its associated document, with relevance
+          judgments as labels (relevant or not).
+        </p>
+        <div style="position: relative; top: 3.5em">
+          <img
+            src="docRelClasModel.PNG"
+            alt=" Document relevance classification model based on BERT"
+            style="display: block; margin-left: auto; margin-right: auto"
+          />
+          <p style="text-align: center">
+            Figure 4. Document relevance classification model based on BERT. The
+            inputs are tokens, made of topics and documents, separated by [SEP]
+            tags (sentence separation). Image taken from [1].<br />
+          </p>
+        </div>
+        <p style="position: relative; top: 5em">
+          &emsp;&emsp;Within the pretrained model's input layer, tokenized
+          topics and documents were separated by the [SEP] token for sentence
+          separation. To capture the sequential text structure, the authors
+          incorporated positional and sentence embeddings into token embeddings,
+          which were passed through BERT's transformer layers. The output of the
+          special [CLS] token was used to determine document relevance.<br /><br />
+          &emsp;&emsp;Similar training strategies were applied to RoBERTa and
+          XLNet. The difference was that RoBERTa was pretrained on a larger
+          corpus and used dynamic masking (seeing different versions of the same
+          sentence at each epoch), while XLNet made use of a permutation
+          language model instead of the masked language model.<br /><br />
+          &emsp;&emsp;The main use of these models in the pipeline was to rerank
+          the top k publications retrieved by the first stage models by pairing
+          each query and each document and classifying them as relevant or not
+          relevant. Authors set k = 5000 in their study.<br /><br />
+          &emsp;&emsp;<b>c. Third stage: fusing the ranking results</b><br />
+          &emsp;&emsp;In their study, the authors used the RRF (Reciprocal Rank
+          Fusion) algorithm to combine the results of different retrieval runs.
+          RRF is a straightforward and effective technique for rescoring a
+          retrieval list based on the scores of multiple retrieval lists.<br /><br />
+          &emsp;&emsp;Authors also made use of two learning-to-rank models,
+          LambdaMART and logistic regression classifier, in order to consider
+          the ranking provided by the bag-of-words models as well, besides the
+          ranking resulted from the language models. The pairwise model used by
+          the authors compared pairs of documents and concluded which was the
+          more relevant document from the pair.<br /><br />
+        </p>
+        <!--pipeline end-->
+      </section>
+
+      <!--results start-->
+      <section>
+        <h2 style="position: relative; top: 5em; left: 5em">III. Results</h2>
+        <br />
+        <p style="position: relative; top: 5em">
+          &emsp;&emsp;The metrics considered in this study were the official
+          metrics for TREC-COVID challenge: precision at K documents (P@K), NDCG
+          at K documents (NDCG@K), mean average precision (MAP), and binary
+          preference (Bpref).<br /><br />
+          &emsp;&emsp;For the challenge, authors submitted 7 rounds of scores
+          (M1 - M7), each consecutive round having a more complex and better
+          yielding score than the previous round. The baseline model, used in
+          the first round, was the BM25. The last round was a combination of the
+          models, following the architecture described previously.<br /><br />
+        </p>
+        <div style="position: relative; top: 3.5em">
+          <img
+            src="difScores.PNG"
+            alt="Difference in scores depending on models used"
+            style="display: block; margin-left: auto; margin-right: auto"
+          />
+          <p style="text-align: center">
+            Table 2. Difference in scores depending on models used. On average,
+            model 7 was able to retrieve approximately 17 documents (out of 20)
+            relevant to the query, compared to baseline model 1 which retrieved
+            approximately 12.5 documents (out of 20). Table taken from [1].
+          </p>
+        </div>
+        <p style="position: relative; top: 5em">
+          &emsp;&emsp;1. M1 (bm25): Based on the BM25 weighting model applied to
+          the metadata index, serving as the baseline run.<br />
+          &emsp;&emsp;2. M2 (bow + rrf): A fusion of BM25, DFR, and LMD
+          weighting models, computed against both the metadata and full-text
+          indices, combined using the RRF algorithm.<br />
+          &emsp;&emsp;3. M3 (mlm + rrf): Utilized the RRF combination of BERT,
+          RoBERTa, and XLNet models applied to the top 5000 documents retrieved
+          by M2.<br />
+          &emsp;&emsp;4. M4 (bow + mlm + rrf): Combined the results of M2 and M3
+          using the RRF algorithm.<br />
+          &emsp;&emsp;5. M5 (bow + mlm + lm): Reranked the results of M2 and M3
+          using the LambdaMART algorithm, trained with similarity scores from
+          these models.<br />
+          &emsp;&emsp;6. M6 (bow + mlm + lr): Used a logistic regression
+          classifier, using similarity scores from M2 and M3 as features to
+          classify the relevance of query-document pairs.<br />
+          &emsp;&emsp;7. M7 (bow + mlm + lr + rrf): Combined runs from M2, M3,
+          and M6 using the RRF algorithm. In all RRF combinations, the parameter
+          "k" was set to 60.<br /><br />
+          &emsp;&emsp;When comparing relative improvement to the baseline model,
+          it can be observed that the highest jump in score was produced by
+          using masked language models (M3, M4). However, the score was
+          negatively affected considerably when making use of the “classic”
+          learning-to-rank models. This, in turn, was fixed when the authors
+          combined bag-of-words models, masked language models, learning-to-rank
+          models and reciprocal rank fusion, obtaining M7.<br /><br />
+        </p>
+        <div style="position: relative; top: 3.5em">
+          <img
+            src="relativeGain.PNG"
+            alt="Relative gain of M1-M7 models 7 models compared to baseline BM25"
+            style="display: block; margin-left: auto; margin-right: auto"
+          />
+          <p style="text-align: center">
+            Figure 5. Relative gain of M1-M7 models compared to baseline BM25.
+            Image taken from [1].
+          </p>
+        </div>
+        <div style="position: relative; top: 3.5em">
+          <img
+            src="comparingResults.PNG"
+            alt="Comparing results of individual performance "
+            style="display: block; margin-left: auto; margin-right: auto"
+          />
+          <p style="text-align: center">
+            Table 3. Comparing results of individual performance of masked
+            language models on retrieving relevant documents, showcasing the
+            significant improvement when combined together. Table taken from
+            [1].
+          </p>
+        </div>
+        <p style="position: relative; top: 5em">
+          &emsp;&emsp;Interestingly, the masked language models, when used
+          individually, did not have particularly high scores. When models were
+          combined, however, it can be observed that there is a an approximately
+          15% percentage difference in retrieving relevant documents.<br /><br />
+          &emsp;&emsp;One of the possible reasons for this, authors think, is
+          the fact that different models retrieve different relevant documents.
+          Therefore, when combined, the number of total relevant documents
+          retrieved grows.<br /><br />
+          &emsp;&emsp;When measuring the precision for different topics
+          (measuring precision at 20 documents), authors found that they
+          achieved a median P@20 of 0.9 (out of 1), which can be considered
+          successful overall performance. Authors observed that for a few topics
+          (such as: "coronavirus hospital rationing," "coronavirus quarantine,"
+          "what alcohol sanitizer kills coronavirus”) the model did not manage
+          to retrieve not even 50% of relevant documents (in top 20).<br /><br />
+        </p>
+      </section>
+      <!--results end-->
+
+      <!--discussion start-->
+      <section>
+        <h2 style="position: relative; top: 5em; left: 5em">IV. Discussion</h2>
+        <br />
+        <p style="position: relative; top: 5em">
+          &emsp;&emsp;Currently, the most popular approaches for ranking
+          documents in information retrieval systems are the “classic”
+          query-document probabilistic approach together with probabilistic
+          language models and the learning-to-rank approach.<br /><br />
+          &emsp;&emsp;It can be observed that, when used individually, both
+          classic and learning-to-rank approaches perform with moderate results.
+          The most important aspect of the study is combining both the classic
+          and the learning-to-rank approach in a complex pipeline able to
+          effectively retrieve and rank relevant documents to a given query.
+          This combination yields a significant gain in retrieving and ranking
+          relevant documents, with almost 26% increase in the NDCG@20 metric,
+          compared to the bag-of-words baseline.<br /><br />
+          &emsp;&emsp;The purpose of the study was, first of all, creating an
+          efficient information retrieval system to combat the surge in
+          scientific publications related to COVID-19. By taking part in the
+          TREC-COVID challenge, the authors helped build a tool for researchers
+          and clinicians that study the pandemic, offering them the most
+          relevant and important works on the topic. Second of all, the works
+          falls in line with WHO recommendations at the time and helps towards
+          building living systematic reviews.<br /><br />
+          &emsp;&emsp;An important finding revealed by this study was that
+          decomposing the indexing unit in smaller structures (sentences and
+          paragraphs) was shown to yield better results for high-level topics
+          and pose challenges when retrieving relevant documents.<br /><br />
+          &emsp;&emsp;When comparing similar systems built for this challenge,
+          the vast majority base their scoring system on the TF-IDF framework,
+          where the scores between a query q and a document d is computed using
+          the following (or similar) formula:<br /><br />
+        </p>
+        <div style="position: relative; top: 3.5em">
+          <img
+            src="formula1.PNG"
+            alt="formula 1"
+            style="display: block; margin-left: auto; margin-right: auto"
+          />
+        </div>
+        <p style="position: relative; top: 5em">
+          &emsp;&emsp;The authors of [1] make use of a different formula, by
+          taking into account previous ranking of documents R:<br /><br />
+        </p>
+        <div style="position: relative; top: 3.5em">
+          <img
+            src="formula2.PNG"
+            alt="formula 2"
+            style="display: block; margin-left: auto; margin-right: auto"
+          />
+        </div>
+        <p style="position: relative; top: 5em">
+          &emsp;&emsp;Where r(q, d) is the rank of document d for the query q in
+          the ranking file ri and k is a threshold parameter, which was tuned to
+          k=60 using data from previous rounds. This improvement in the formula
+          is what allowed the authors of [1] to achieve a successful ranking
+          system for COVID-19 related queries and documents.<br /><br />
+          &emsp;&emsp;In conclusion, the research offers a valuable contribution
+          to information retrieval during an infodemic, addressing the needs of
+          professionals dealing with COVID-19 information. Their methods can
+          potentially be extended to future infodemics and other large-scale
+          knowledge management challenges, giving effective tools to combat the
+          overwhelming tide of data to information seekers. This work not only
+          presents an effective solution for the case of COVID-19 but also opens
+          the door to improved information retrieval systems in the face of
+          future pandemics or similar crises.<br /><br />
+        </p>
+      </section>
+      <!--discussion end-->
+
+      <!--proposal start-->
+      <section>
+        <h2 style="position: relative; top: 5em; left: 5em">
+          V. Proposal for improvements and future work
+        </h2>
+        <br />
+        <p style="position: relative; top: 5em">
+          &emsp;&emsp;In order to improve the pipeline created by the authors of
+          [1], we could suggest swapping models used in the study with new
+          researched advancements that appeared in the latest years or just
+          adding new models to the pipeline if the models used are considered
+          obsolete.<br /><br />
+          &emsp;&emsp;Besides improving the ranking, the study does not consider
+          how the system would behave if the documents observed were generated
+          by LLM models. A study conducted in October 2023 pointed to the fact
+          that neural retrievers are biased towards LLM generated texts [3]. One
+          possible way of improving this work from 2021 is testing if the
+          ranking holds up when exposed to known LLM generated text and if it
+          sufferers from the same bias mentioned by the authors of [3], by
+          making use of the newly introduced benchmarks SciFact+AIGC and
+          NQ320K+AIGC, where the corpus contains both human written articles and
+          LLM generated articles.<br /><br />
+          &emsp;&emsp;Another possible improvement could be made if the inputs
+          to the document retriever models and reranking models would take into
+          account keywords as well. In a very recent study, the authors of
+          MedFusionRank [4], a promising Medical IR model, integrate keywords
+          from the documents in order to better capture semantic context. In
+          comparison, [1] takes into account the metadata and full text of
+          documents.<br /><br />
+          &emsp;&emsp;Lastly, by taking advantage of the newly researched LLM
+          available, the queries used to train the models could be paired with a
+          set of possible describing questions which would be generated by an
+          LLM. For example, the original dataset contains the query “Coronavirus
+          origin” and the corresponding question is “What is the origin of
+          COVID-19?”. An LLM could take as input the query and question and
+          generate multiple similar questions and naratives that could be then
+          fed to the neural retrievers and reranker models. This might help
+          artificially expand the training dataset and provide better learning
+          capabilities to the model, provided the LLM used does not hallucinate
+          too much.<br /><br />
+        </p>
+      </section>
+      <!--proposal end-->
+
+      <!--Referinte start-->
+      <section>
+        <h2 style="position: relative; top: 5em; left: 5em">V. References</h2>
+        <br />
+        <p style="position: relative; top: 5em">
+          &emsp;&emsp;[1] - D. Teodoro, S. Ferdowsi, N. Borissov, E. Kashani,
+          D. Vicente Alvarez, J. Copara, R. Gouareb, N. Naderi, P. Amini,
+          “Information Retrieval in an Infodemic: The Case of COVID-19
+          Publications”, 2021, Journal of Medical Internet Research,
+          <a href="https://www.jmir.org/2021/9/e30161">URL</a><br />
+          &emsp;&emsp;[2] Digital Science Dimension<br />
+          &emsp;&emsp;[3] S. DAI, Y. ZHOU, L. PANG, W. LIU, X. HU, Y. LIU, X.
+          ZHANG, J. XU, “LLMs may Dominate Information Access: Neural Retrievers
+          are Biased Towards LLM-Generated Texts”,
+          <a href="https://arxiv.org/abs/2310.20501">URL</a><br />
+          &emsp;&emsp;[4] - Y. WANG, Z. WANG, W. WANG, Q. CHEN, K. HUANG, A.
+          NGUYEN, S. DE, “Zero-Shot Medical Information Retrieval via Knowledge
+          Graph Embedding”,
+          <a href="https://arxiv.org/pdf/2310.20588v1.pdf">URL</a><br />
+        </p>
+      </section>  
+      <!--Referinte end-->
+    </div>
+    <!--Methods end-->
   </body>
 </html>
